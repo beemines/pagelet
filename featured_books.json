@@ -1,0 +1,295 @@
+{
+  "books": [
+    {
+      "id": "27062424:601d30",
+      "name": "一念永恒",
+      "publisher": "起点中文网",
+      "year": "2019",
+      "language": "Chinese",
+      "extension": "epub",
+      "size": "8.99 MB",
+      "rating": "0",
+      "quality": "5.0",
+      "authors": [
+        "耳根"
+      ],
+      "cover": "https://s3proxy-alp2-covers.cdn-zlib.sk/covers299/collections/userbooks/4178ca3312e60c8cb557db0990c0718a49e13503a651caa27bece79b0315c192.jpg",
+      "url": "https://z-lib.gd/book/pP5mRpvjPq/%E4%B8%80%E5%BF%B5%E6%B0%B8%E6%81%92.html",
+      "description": "",
+      "local_cover": "/static/covers/home-yinianyongheng.jpg"
+    },
+    {
+      "id": "25277046:556ba4",
+      "name": "Operating System Concepts",
+      "publisher": "Wiley",
+      "year": "2018",
+      "language": "English",
+      "extension": "pdf",
+      "size": "29.69 MB",
+      "rating": "5.0",
+      "quality": "5.0",
+      "isbn": "9781119800361,1119800366",
+      "edition": "10",
+      "pages": "1040",
+      "authors": [
+        "Abraham Silberschatz, Greg Gagne, Peter B. Galvin"
+      ],
+      "cover": "https://s3proxy-alp2-covers.cdn-zlib.sk/covers299/collections/userbooks/4c9a97317cccf4e58a399deb874ae21612be6c8f310a8297c70f5dc00fc354c1.jpg",
+      "url": "https://z-lib.gd/book/EXM6ppmmAN/operating-system-concepts.html",
+      "description": "The tenth edition of Operating System Concepts has been revised to keep it fresh and up-to-date with contemporary examples of how operating systems function, as well as enhanced interactive elements to improve learning and the students experience with the material. It combines instruction on concepts with real-world applications so that students can understand the practical usage of the content. End-of-chapter problems, exercises, review questions, and programming exercises help to further reinforce important concepts. New interactive self-assessment problems are provided throughout the text to help students monitor their level of understanding and progress. A Linux virtual machine (including C and Java source code and development tools) allows students to complete programming exercises that help them engage further with the material.",
+      "local_cover": "/static/covers/home-os-concepts.jpg"
+    },
+    {
+      "id": "11934728:195803",
+      "name": "傲慢与偏见 (译文名著典藏)",
+      "publisher": "上海译文出版社",
+      "year": "2013",
+      "language": "Chinese",
+      "extension": "epub",
+      "size": "7.07 MB",
+      "rating": "5.0",
+      "quality": "5.0",
+      "authors": [
+        "(英)简·奥斯丁著,王科一译"
+      ],
+      "cover": "https://s3proxy-alp2-covers.cdn-zlib.sk/covers299/collections/userbooks/c506e186a1fe31eacebbf6ab214128802a99d7dcd20405ef0fe66dfc8df45cfd.jpg",
+      "url": "https://z-lib.gd/book/lXk316WbXa/%E5%82%B2%E6%85%A2%E4%B8%8E%E5%81%8F%E8%A7%81-%E8%AF%91%E6%96%87%E5%90%8D%E8%91%97%E5%85%B8%E8%97%8F.html",
+      "description": "",
+      "local_cover": "/static/covers/home-pride-prejudice.jpg"
+    },
+    {
+      "id": "5248271:d3995c",
+      "name": "三体",
+      "publisher": "重庆出版社",
+      "year": "2008",
+      "language": "Chinese",
+      "extension": "pdf",
+      "size": "11.60 MB",
+      "rating": "5.0",
+      "quality": "3.5",
+      "isbn": "9787536692930,7536692935",
+      "pages": "309",
+      "authors": [
+        "刘慈欣 (Cixin Liu)"
+      ],
+      "cover": "https://s3proxy-alp2-covers.cdn-zlib.sk/covers299/collections/genesis/85d5292e7aad54bad38290d54a6616ce4694bd59a90e60fa0500e50654bb35df.jpg",
+      "url": "https://z-lib.gd/book/yrKd4GBYX9/%E4%B8%89%E4%BD%93-v1-%E5%9C%B0%E7%90%83%E5%BE%80%E4%BA%8B-the-threebody-problem-remembrance-of-earths-past.html",
+      "description": "b/w version of the original upload + OCR",
+      "local_cover": "/static/covers/home-three-body.jpg"
+    },
+    {
+      "id": "11961558:114b8f",
+      "name": "时间简史",
+      "publisher": "湖南科学技术出版社",
+      "year": "2010",
+      "language": "Chinese",
+      "extension": "epub",
+      "size": "18.61 MB",
+      "rating": "5.0",
+      "quality": "5.0",
+      "isbn": "9787535732309,7535732305",
+      "pages": "245",
+      "authors": [
+        "[英] 史蒂芬・霍金 (Stephen Hawking) 著 ; 许明贤, 吴忠超 译"
+      ],
+      "cover": "https://s3proxy-alp2-covers.cdn-zlib.sk/covers299/collections/userbooks/14722ece097e4f82c722ba91b0589839df713c33b9b5960e972078a0dbd0fbff.jpg",
+      "url": "https://z-lib.gd/book/4AvLOQpMra/%E6%97%B6%E9%97%B4%E7%AE%80%E5%8F%B2-%E6%8F%92%E5%9B%BE%E6%9C%AC-a-brief-history-of-time.html",
+      "description": "《时间简史》讲述是探索时间和空间核心秘密的故事，是关于宇宙本性的最前沿知识，包括我们的宇宙图像、空间和时间、膨胀的宇宙不确定性原理、基本粒子和自然的力、黑洞、黑洞不是这么黑、时间箭头等内容。第一版中的许多理论预言，后来在对微观或宏观宇宙世界观测中得到证实。\n\n自1988年首版以来，《时间简史》已成为全球科学著作的里程碑。它被翻译成40种文字，销售了近1000万册。此版更新了内容，把许多观测揭示的新知识，以及霍金最新的研究纳入，并配以250幅照片和电脑制作的三维和四维空间图。",
+      "local_cover": "/static/covers/home-brief-history.jpg"
+    },
+    {
+      "id": "13955228:c15f6f",
+      "name": "诛仙",
+      "publisher": "时代文艺出版社",
+      "year": "2016",
+      "language": "Chinese",
+      "extension": "epub",
+      "size": "9.76 MB",
+      "rating": "5.0",
+      "quality": "5.0",
+      "authors": [
+        "萧鼎"
+      ],
+      "cover": "https://s3proxy-alp2-covers.cdn-zlib.sk/covers299/collections/userbooks/3d0023d7ddef7697492a1619b8c347e8d83bfa9877ab0f99287a720485946f39.jpg",
+      "url": "https://z-lib.gd/book/lXk3dbqqXa/%E8%AF%9B%E4%BB%99.html",
+      "description": "",
+      "local_cover": "/static/covers/home-zhuxian.jpg"
+    },
+    {
+      "id": "18238904:233703",
+      "name": "操作系统导论",
+      "publisher": "人民邮电出版社",
+      "year": "2019",
+      "language": "Chinese",
+      "extension": "pdf",
+      "size": "5.20 MB",
+      "rating": "5.0",
+      "quality": "5.0",
+      "isbn": "9787115508232,7115508232",
+      "pages": "482",
+      "authors": [
+        "Remzi H. Arpaci-Dusseau, Andrea C. Arpaci-Dusseau"
+      ],
+      "cover": "https://s3proxy-alp2-covers.cdn-zlib.sk/covers299/collections/userbooks/315c5202f1cf959ae8016d74b16542a8a99b0ead6b5f581fde4e6d7fa6dfb1e1.jpg",
+      "url": "https://z-lib.gd/book/YX3JbJnjry/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA.html",
+      "description": "这是一本关于现代操作系统的书。全书围绕虚拟化、并发和持久性这3个主要概念展开，介绍了所有现代系统的主要组件（包括调度、虚拟内存管理、磁盘和I/O子系统、文件系统）。\n\n本书共50章，分为3个部分，分别讲述虚拟化、并发和持久性的相关内容。本书大部分章节均先提出特定的问题，然后通过书中介绍的技术、算法和思想来解决这些问题。笔者以对话形式引入所介绍的主题概念，行文诙谐幽默却又鞭辟入里，力求帮助读者理解操作系统中虚拟化、并发和持久性的原理。\n\n本书内容全面，并给出了真实可运行的代码（而非伪代码），还提供了相应的练习，适合高等院校相关专业教师教学和高校学生自学。",
+      "local_cover": "/static/covers/home-ostep.jpg"
+    },
+    {
+      "id": "10971741:50e591",
+      "name": "基督山伯爵",
+      "publisher": "译林出版社",
+      "year": "2013",
+      "language": "Chinese",
+      "extension": "epub",
+      "size": "2.03 MB",
+      "rating": "5.0",
+      "quality": "5.0",
+      "isbn": "9787544731591,7544731596",
+      "authors": [
+        "[法国]大仲马 译者 周克希"
+      ],
+      "cover": "https://s3proxy-alp2-covers.cdn-zlib.sk/covers299/collections/userbooks/3cd9e475f2e43f77182f9a244a2483c622266b4606a893c0c45c09d6e20989be.jpg",
+      "url": "https://z-lib.gd/book/EAOQvK1Or1/%E5%9F%BA%E7%9D%A3%E5%B1%B1%E4%BC%AF%E7%88%B5.html",
+      "description": "",
+      "local_cover": "/static/covers/home-monte-cristo.jpg"
+    },
+    {
+      "id": "11273170:dc70e0",
+      "name": "万历十五年",
+      "publisher": "中华书局",
+      "year": "2007",
+      "language": "Chinese",
+      "extension": "epub",
+      "size": "8.09 MB",
+      "rating": "5.0",
+      "quality": "5.0",
+      "isbn": "9787101101621,7101101623",
+      "pages": "286",
+      "authors": [
+        "黄仁宇"
+      ],
+      "cover": "https://s3proxy-alp2-covers.cdn-zlib.sk/covers299/collections/userbooks/65d91dbb6feeb46eb7b7ab0d5fca61b9313091b86ecd77dce20dad613dbb35f2.jpg",
+      "url": "https://z-lib.gd/book/LAng8kqQPb/%E4%B8%87%E5%8E%86%E5%8D%81%E4%BA%94%E5%B9%B4-%E5%A2%9E%E8%AE%A2%E6%9C%AC-1587-a-year-of-no-significance.html",
+      "description": "内容简介 · · · · · ·\n\n《万历十五年》是一部改变中国人阅读方式的经典，是美籍华裔历史学家黄仁宇的成名之作，也是他的代表作之一。这部作品融会作者数十年人生经验与治学体会于一体，首次以“大历史观”分析明代社会之症结，观察现代中国之来路，发人深思。\n\n《万历十五年》英文本被美国多所大学采用为教科书，并两次获得美国书卷奖历史类好书的提名；中文本问世后，好评如潮，成为众多作家、学者、企业家、高校师生的案头书，并入选《新周刊》和《书城》“改革开放20年来对中国影响最大的20本书”。另有日文、法文、德文、韩文等版本。\n\n万历十五年，亦即公元1587年，在西欧历史上为西班牙舰队全部出动征英的前一年；而在中国，这平平淡淡的一年中，发生了若干为历史学家所易于忽视的事件。这些事件，表面看来虽似末端小节，但实质上却是以前发生大事的症结，也是将在以后掀起波澜的机缘。在历史学家黄仁宇的眼中，其间的关系因果，恰为历史的重点，而我们的大历史之旅，也自此开始……",
+      "local_cover": "/static/covers/home-wanli.jpg"
+    },
+    {
+      "id": "16696850:76a14f",
+      "name": "斗破苍穹",
+      "publisher": "阅文集团",
+      "year": "2017",
+      "language": "Chinese",
+      "extension": "epub",
+      "size": "8.24 MB",
+      "rating": "3.0",
+      "quality": "4.5",
+      "isbn": "B0777GZTKB",
+      "authors": [
+        "天蚕土豆"
+      ],
+      "cover": "https://s3proxy-alp2-covers.cdn-zlib.sk/covers299/collections/userbooks/13704379ba7b7b2669292d3ee3a20ea82b2955bcaf3060fd2f10adba99ff8678.jpg",
+      "url": "https://z-lib.gd/book/KA2R3ekJAw/%E6%96%97%E7%A0%B4%E8%8B%8D%E7%A9%B9.html",
+      "description": "",
+      "local_cover": "/static/covers/home-doupocangqiong.jpg"
+    },
+    {
+      "id": "3656642:7b8ba1",
+      "name": "思考，快与慢",
+      "publisher": "中信出版社",
+      "year": "2012",
+      "language": "Chinese",
+      "extension": "mobi",
+      "size": "2.59 MB",
+      "rating": "5.0",
+      "quality": "5.0",
+      "isbn": "9787508633558,7508633555",
+      "pages": "424",
+      "authors": [
+        "[美] 丹尼尔 · 卡尼曼 (Daniel Kahneman) 著 ; 李爱民, 何梦莹, 胡晓姣 译"
+      ],
+      "cover": "https://s3proxy-alp2-covers.cdn-zlib.sk/covers299/collections/genesis/76cc483eebc7e012dead22f82770a90a5fd8048f16a495ed53500d04230f65b4.jpg",
+      "url": "https://z-lib.gd/book/gMrDB9KNAx/%E6%80%9D%E8%80%83-%E5%BF%AB%E4%B8%8E%E6%85%A2-thinking-fast-and-slow.html",
+      "description": "《纽约时报》2011年度十大好书\n新书上市，连续20多周蝉联亚马逊、《纽约时报》畅销书排行榜前20名，上市至今超过7个月，横扫全球各大畅销书排行榜，稳居亚马逊总榜前50名\n《经济学人》、《华尔街日报》、《卫报》、《纽约时报》、《金融时报》、《商业周刊》、《华盛顿邮报》、等国外权威媒体，《三联生活周刊》、《商学院》、《东方早报》等国内知名媒体争相报道，国内外读者好评如潮\n人类究竟有多理性？——思考，快与慢\n在书中，卡尼曼会带领我们体验一次思维的终极之旅。他认为，我们的大脑有快与慢两种作决定的方式。常用的无意识的“系统1”依赖情感、记忆和经验迅速作出判断，它见闻广博，使我们能够迅速对眼前的情况作出反应。但系统1也很容易上当，它固守“眼见即为事实”的原则，任由损失厌恶和乐观偏见之类的错觉引导我们作出错误的选择。有意识的“系统2”通过调动注意力来分析和解决问题，并作出决定，它比较慢，不容易出错，但它很懒惰，经常走捷径，直接采纳系统1的直觉型判断结果。\n为了使读者真切体会到系统1和系统2这两个主角的特点，卡尼曼介绍了很多经典有趣的行为实验，指出我们在什么情况下可以相信自己的直觉，什么时候不能相信；指导我们如何在商场、职场和个人生活中作出更好的选择，以及如何运用不同技巧来避免那些常常使我们陷入麻烦的思维失误。\n本书将会彻底改变你对思考的看法。\n编辑推荐\n50 年前，人们以为我们能驾驭自己的思想。但事实上，我们的行为常常受到许多无法看见的因素所影响。我们虽然身处生活这场游戏之中，但对游戏的机制却不理解，偏见常常导致我们追求错误的东西。我们的感知和记忆并不可靠，对于自己心理状态的感知和记忆尤其不可靠。\n关于人类自身还有许多未知之谜，对于自己，我们了解得其实不多。卡尼曼就如思想的拓荒者，他的研究成果为我们认识自我提供了重要的支点。卡尼曼对于人类思考和选择的理解所作出的贡献，无人能出其右。作为历史上最重要的一位心理学家，卡尼曼重塑了认知心理学、理性和因果关系分析，重新诠释了风险，重新阐释了幸福和财富的关系，写就了这部杰作。如果你今年只能读一本书，就读这一本吧。\n媒体和专家热评\n这是社会思想的一部里程碑式著作，堪与亚当•史密斯的《国富论》和西格蒙德•弗洛伊德的《梦的解析》相媲美。\n——纳西姆•尼古拉斯•塔勒布，《黑天鹅》作者\n本书是一位智慧巨人的力作，可读性强，睿智，深刻。赶紧买，慢慢读，而且要反复读。这本书会改变你的思考方式，读了它，你对工作、世界还有自己的生活的看法都会改变。\n——理查德•H.•泰勒，芝加哥大学经济学教授，《助推》作者\n本书堪称杰作——由我们这个时代最伟大、最深邃的一位思想家推出的恢弘巨作，闪耀着智慧的光芒。卡尼曼在获得诺贝尔奖之后应该再得一个普利策奖才对。\n——丹尼尔•吉尔伯特，哈佛大学心理学教授，《哈佛幸福课》作者\n丹尼尔•卡尼曼是我们这个时代最有独创性、最有趣的思想家之一。也许我们这个星球上再无第二个人比他更懂我们怎样作出选择、为什么这样选择了。在这本精彩绝伦的书中，他用一种简单而又吸引人的方式为我们展示了令人受益一生的智慧。尽管方式简单，其内容却十分深刻。本书是所有怀有好奇之心的人的必读之作。\n——史蒂文•列维特，芝加哥大学杰出经济学教授，《魔鬼经济学》与《超爆魔鬼经济学》作者\n一本杰出的著作，细节清晰，文笔优美，诠释精准，娓娓道来。它适合于所有系统2还没有完全失效的人阅读。\n——《卫报》\n这本书的内容非常丰富：深入浅出，知识渊博，充满学术价值和自助价值。人类的思考有如此多的缺陷，以至于《纽约时报》的专栏作家戴维•布鲁克斯撰稿声称：卡尼曼和特沃斯基的研究工作从现在起将被铭记数百年，他们为我们认识自我提供了重要的支点。强烈推荐大家购买并阅读本书。\n——《纽约时报》书评版\n阐述人类的理性和非理性的好书已经有很多了，但只有一部杰作，那就是这本书。它是我读过的有关人类思维的最伟大的、最富洞见性的一本书。\n——《金融时报》\n意义深远。就像哥白尼否定地心说、达尔文提出生物进化论一样，卡尼曼向我们展示了，我们并没有自己想象的那么理性。\n——《经济学人》\n历时五十载，通过对人类判断、决策和选择的研究，卡尼曼写就了这部令人称道的作品。他的优雅有力的观点和极具说服力的证据，为我们理解自我和思维提大有裨益。\n——《华尔街日报》\n关于我们的大脑有多容易上当，这本书作了全面、有说服力的论述。根基于自己的和多位心理学家、经济学家与其他专家的研究成果，卡尼曼拥有了一种卓越的能力，能够把数十年以来的研究成果以一种有趣的语言呈现出来，即使门外汉也能看得懂。这本书是一本非常重要的书。许多科学书通常是前后不一的，一些有趣的章节后面往往跟着一些枯燥乏味的内容。这本书就不是这样，它既是有分量的一本书，同时充满了魅力和实用性，适用于我们的日常生活。每个人都应该读读这本书。\n——《波士顿环球报》",
+      "local_cover": "/static/covers/home-thinking.jpg"
+    },
+    {
+      "id": "11938580:e1d83f",
+      "name": "现代操作系统(第四版)",
+      "publisher": "机械工业出版社",
+      "year": "2017",
+      "language": "Chinese",
+      "extension": "pdf",
+      "size": "184.57 MB",
+      "rating": "5.0",
+      "quality": "5.0",
+      "isbn": "9787111573692,7111573692",
+      "edition": "4",
+      "pages": "610",
+      "authors": [
+        "Andrew S. Tanenbaum, Herbert Bos"
+      ],
+      "cover": "https://s3proxy-alp2-covers.cdn-zlib.sk/covers299/collections/userbooks/b294a8da7c451e1cb387dc20f0a8dc7bead72f3b89fe9c8836e65199a0325821.jpg",
+      "url": "https://z-lib.gd/book/6Py5n32ePg/%E7%8E%B0%E4%BB%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E5%9B%9B%E7%89%88.html",
+      "description": "",
+      "local_cover": "/static/covers/home-modern-os.jpg"
+    },
+    {
+      "id": "11965076:80f24c",
+      "name": "老人与海（译文40）",
+      "publisher": "上海译文出版社",
+      "year": "2018",
+      "language": "Chinese",
+      "extension": "epub",
+      "size": "4.56 MB",
+      "rating": "0",
+      "quality": "0",
+      "isbn": "9787532777983,7532777987",
+      "authors": [
+        "【美】海明威 [〔美〕海明威]"
+      ],
+      "cover": "https://s3proxy-alp2-covers.cdn-zlib.sk/covers299/collections/userbooks/3200471cfadf6371dde8165c8f1239048960a9bc3fcf50016e656ef21adfea04.jpg",
+      "url": "https://z-lib.gd/book/5Xgp1kbyAb/%E8%80%81%E4%BA%BA%E4%B8%8E%E6%B5%B7%E8%AF%91%E6%96%8740.html",
+      "description": "",
+      "local_cover": "/static/covers/home-old-man-sea.jpg"
+    },
+    {
+      "id": "18062266:7243d4",
+      "name": "苏东坡传",
+      "publisher": "湖南文艺出版社",
+      "year": "2016",
+      "language": "Chinese",
+      "extension": "epub",
+      "size": "1.34 MB",
+      "rating": "5.0",
+      "quality": "5.0",
+      "isbn": "B01IQRTE32",
+      "authors": [
+        "林语堂"
+      ],
+      "cover": "https://s3proxy-alp2-covers.cdn-zlib.sk/covers299/collections/userbooks/2d8b7d81d391e1542486470acfeaa5a6ae372571946e444e3ee0b8d1d2fabf12.jpg",
+      "url": "https://z-lib.gd/book/pXe90ezxXo/%E8%8B%8F%E4%B8%9C%E5%9D%A1%E4%BC%A0%E6%9E%97%E8%AF%AD%E5%A0%82%E9%80%9D%E4%B8%9640%E5%91%A8%E5%B9%B4%E7%BA%AA%E5%BF%B5%E5%85%B8%E8%97%8F%E7%89%88%E5%8D%9A%E9%9B%86%E6%96%87%E5%AD%A6%E5%85%B8%E8%97%8F%E7%B3%BB%E5%88%97-%E5%8D%9A%E9%9B%86%E5%8E%86%E5%8F%B2%E5%85%B8%E8%97%8F%E9%A6%86.html",
+      "description": "",
+      "local_cover": "/static/covers/home-sudongpo.jpg"
+    },
+    {
+      "id": "16886985:cde4fa",
+      "name": "飞鸟集",
+      "publisher": "外语教学与研究出版社",
+      "year": "2009",
+      "language": "Chinese",
+      "extension": "epub",
+      "size": "295 KB",
+      "rating": "4.5",
+      "quality": "5.0",
+      "isbn": "B008H0BP54",
+      "authors": [
+        "罗宾德拉纳特·泰戈尔 (Rabindranath Tagore)"
+      ],
+      "cover": "https://s3proxy-alp2-covers.cdn-zlib.sk/covers299/collections/userbooks/98af7ef95bdf52e9ad7339e0ae3bf1b8e7e618d8aea89ffdbaecb55c964a6115.jpg",
+      "url": "https://z-lib.gd/book/EAOmZ6z2r1/%E6%B3%B0%E6%88%88%E5%B0%94%E8%8B%B1%E6%96%87%E8%AF%97%E9%9B%86%E9%A3%9E%E9%B8%9F%E9%9B%86.html",
+      "description": "技术和制作支持：北京桑里德文化发展有限公司Technical and production support: Beijing. Sunlit Culture Development Co., Ltd.",
+      "local_cover": "/static/covers/home-stray-birds.jpg"
+    }
+  ]
+}

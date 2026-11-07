@@ -1,0 +1,2 @@
+APP_NAME='Pagelet'
+VERSION='0.0.1'

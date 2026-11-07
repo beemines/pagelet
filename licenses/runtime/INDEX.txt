@@ -1,0 +1,14 @@
+openssl 3.5.7: openssl/
+bzip2 1.0.8: bzip2/
+vc14_runtime 14.44.35208: vc14_runtime/
+ucrt 10.0.22621.0: ucrt/
+Windows Terminal / ConPTY: accompanying pywinpty 3.1.2, Windows-Terminal.txt
+winpty: accompanying pywinpty 3.1.2, winpty.txt
+
+Additional upstream license texts for bundled Python runtime dependencies:
+libffi: https://raw.githubusercontent.com/libffi/libffi/master/LICENSE
+XZ-overview: https://raw.githubusercontent.com/tukaani-project/xz/master/COPYING
+XZ-0BSD: https://raw.githubusercontent.com/tukaani-project/xz/master/COPYING.0BSD
+zlib: https://raw.githubusercontent.com/madler/zlib/develop/LICENSE
+Expat 2.8.5: Expat/COPYING
+libmpdec 4.0.0: mpdecimal/COPYRIGHT.txt

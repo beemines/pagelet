@@ -1,0 +1,14 @@
+data/
+__pycache__/
+tests/tmp*/
+login-ui/node_modules/
+vendor/
+build/
+dist/
+previews/
+Downloads/
+*.log
+*.pyc
+tests/preview-runtime.json
+.env
+*.spec.bak
