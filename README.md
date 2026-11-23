@@ -11,7 +11,7 @@
 [下载 Windows 版](https://github.com/beemines/pagelet/releases/latest) · [使用方法](#使用方法) · [常见问题](#常见问题)
 
 ![Windows 10/11 x64](https://img.shields.io/badge/Windows-10%20%2F%2011-blue)
-![Version](https://img.shields.io/badge/version-0.0.1-3988f8)
+![Version](https://img.shields.io/badge/version-0.0.2-3988f8)
 [![MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 ![Pagelet 浅色主页](docs/images/home-light.jpg)
@@ -20,7 +20,7 @@
 
 ## 下载安装
 
-**[下载 Pagelet v0.0.1 · Windows x64 ZIP](https://github.com/beemines/pagelet/releases/download/v0.0.1/Pagelet-v0.0.1-windows-x64.zip)**
+**[下载 Pagelet v0.0.2 · Windows x64 ZIP](https://github.com/beemines/pagelet/releases/download/v0.0.2/Pagelet-v0.0.2-windows-x64.zip)**
 
 解压整个 ZIP 到自己的文件夹，双击 **`Pagelet.exe`**。浏览器会自动打开 Pagelet。
 
@@ -32,7 +32,7 @@
 
 ### 1. 登录账号
 
-点击右上角 **登录**，输入自己的账号邮箱和密码。没有账号，可点弹窗里的 **去注册**，前往当前设置的书库网站注册。
+点击右上角 **登录**，输入自己的账号邮箱和密码。**去注册** 和 **忘记密码** 会直接在新标签页打开书库网站：若设置为 `zlib.bz`，**去注册** 会打开 `https://z-lib.sk/registration`；找回密码请使用书库登录页上的忘记密码入口。注册、验证码和重置密码都在书库网页完成，Pagelet 不会把登录表单转发给网页。
 
 ![登录窗口](docs/images/login.jpg)
 

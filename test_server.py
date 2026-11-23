@@ -336,6 +336,9 @@ class AppTests(unittest.TestCase):
         self.assertEqual(request('POST', '/api/settings', headers, '{}')[0], 403)
         headers['Origin'] = f'http://127.0.0.1:{port}'
         self.assertEqual(request('POST', '/api/settings', headers, '{}')[0], 200)
+        for suffix in ('', '/confirm', '/resend'):
+            with self.subTest(removed_registration_route=suffix):
+                self.assertEqual(request('POST', '/api/auth/register' + suffix, headers, '{}')[0], 404)
         self.assertEqual(request('GET', '/static/../server.py')[0], 404)
 
     def test_only_static_assets_use_cache_validators(self):

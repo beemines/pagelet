@@ -9305,20 +9305,27 @@ var vb = {
 	"href",
 	"aria-disabled",
 	"tabindex"
-], Tb = { class: "auth-privacy" }, Eb = { class: "auth-connection" }, Db = {
+], Tb = [
+	"href",
+	"aria-disabled",
+	"tabindex"
+], Eb = { class: "auth-privacy" }, Db = { class: "auth-connection" }, Ob = "https://z-lib.sk/", kb = {
 	__name: "LoginDialog",
 	setup(e) {
-		let t = /* @__PURE__ */ P(!1), n = /* @__PURE__ */ P(!1), r = /* @__PURE__ */ P(!1), i = /* @__PURE__ */ P(""), a = /* @__PURE__ */ P(""), o = /* @__PURE__ */ P(), s = /* @__PURE__ */ P(), c = /* @__PURE__ */ P(), l = /* @__PURE__ */ Ht({
+		let t = /* @__PURE__ */ P(!1), n = /* @__PURE__ */ P(!1), r = /* @__PURE__ */ P(!1), i = /* @__PURE__ */ P(!1), a = /* @__PURE__ */ P(""), o = /* @__PURE__ */ P(""), s = /* @__PURE__ */ P(), c = /* @__PURE__ */ P(), l = /* @__PURE__ */ P(), u = /* @__PURE__ */ Ht({
 			email: "",
 			password: ""
-		}), u = J(() => {
+		}), d = J(() => {
 			try {
-				let e = new URL(a.value);
-				return e.protocol !== "https:" || e.username || e.password ? "" : new URL("/registration", e.origin).href;
+				let e = new URL(o.value);
+				return e.protocol !== "https:" || e.username || e.password || e.port || e.pathname !== "/" || e.search || e.hash ? "" : e.origin;
 			} catch {
 				return "";
 			}
-		}), d = {
+		}), f = J(() => {
+			let e = d.value;
+			return new URL("/registration", e && e !== "https://zlib.bz" ? e : Ob).href;
+		}), p = J(() => new URL("/login", d.value || Ob).href), m = J(() => i.value || n.value || r.value), h = {
 			email: [{
 				required: !0,
 				message: "请输入账号邮箱",
@@ -9333,13 +9340,13 @@ var vb = {
 				message: "请输入密码",
 				trigger: "blur"
 			}]
-		}, f, p, m = 0, h = "", g = !1, _ = !1, v = document.querySelector("meta[name=\"local-token\"]").content;
-		async function y(e, t) {
+		}, g, _, v = 0, y = "", b = !1, x = !1, S = document.querySelector("meta[name=\"local-token\"]").content;
+		async function C(e, t) {
 			let n = t === void 0 ? {} : {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
-					"X-Local-Token": v
+					"X-Local-Token": S
 				},
 				body: JSON.stringify(t)
 			}, r;
@@ -9352,88 +9359,90 @@ var vb = {
 			if (!r.ok) throw Error(i.error || "登录未完成，请重试。");
 			return i;
 		}
-		function b() {
+		function w() {
 			try {
-				return new URL(a.value).hostname;
+				return new URL(o.value).hostname;
 			} catch {
 				return "尚未设置访问域名";
 			}
 		}
-		async function x() {
-			if (g) {
-				_ = !0;
+		async function ee() {
+			if (b) {
+				x = !0;
 				return;
 			}
 			if (t.value) return;
-			let e = ++m;
-			i.value = "", r.value = !1, l.password = "", t.value = !0;
+			let e = ++v;
+			a.value = "", r.value = !1, u.password = "", t.value = !0, o.value = "", i.value = !0;
 			try {
-				let r = await y("state");
-				if (e !== m || !t.value) return;
-				a.value = r.domain || "", n.value = ["running", "cancelling"].includes(r.status), h = n.value && r.attempt_id || "", n.value && S(m);
-			} catch (e) {
-				i.value = e.message;
+				let r = await C("state");
+				if (e !== v || !t.value) return;
+				o.value = r.domain || "", n.value = ["running", "cancelling"].includes(r.status), y = n.value && r.attempt_id || "", n.value && te(v);
+			} catch (n) {
+				e === v && t.value && (a.value = n.message);
+			} finally {
+				e === v && (i.value = !1);
 			}
-			await Mn(), s.value?.focus();
+			e === v && t.value && (await Mn(), c.value?.focus());
 		}
-		function S(e) {
-			clearTimeout(f), f = setTimeout(() => C(e), 350);
+		function te(e) {
+			clearTimeout(g), g = setTimeout(() => ne(e), 350);
 		}
-		async function C(e) {
-			if (e === m && t.value) try {
-				let a = await y("state");
-				if (e !== m || !t.value) return;
-				if (["running", "cancelling"].includes(a.status)) {
-					S(e);
+		async function ne(e) {
+			if (e === v && t.value) try {
+				let i = await C("state");
+				if (e !== v || !t.value) return;
+				if (["running", "cancelling"].includes(i.status)) {
+					te(e);
 					return;
 				}
-				n.value = !1, a.status === "success" ? (r.value = !0, window.dispatchEvent(new CustomEvent("book-auth-success")), p = setTimeout(() => {
-					g = !0, t.value = !1;
-				}, 850)) : (i.value = a.error || "登录已取消，可以重新输入。", await Mn(), c.value?.focus());
+				n.value = !1, i.status === "success" ? (r.value = !0, window.dispatchEvent(new CustomEvent("book-auth-success")), _ = setTimeout(() => {
+					b = !0, t.value = !1;
+				}, 850)) : (a.value = i.error || "登录已取消，可以重新输入。", await Mn(), l.value?.focus());
 			} catch (e) {
-				n.value = !1, i.value = e.message;
+				n.value = !1, a.value = e.message;
 			}
 		}
-		async function w() {
-			if (n.value || r.value) return;
-			let e = m;
-			if (!await o.value?.validate().catch(() => !1) || e !== m || !t.value || n.value) return;
-			i.value = "", n.value = !0;
-			let a = ++m;
-			h = crypto.randomUUID();
-			let s = l.password;
-			l.password = "", o.value?.clearValidate("password");
+		async function T() {
+			if (n.value || r.value || i.value) return;
+			let e = v;
+			if (!await s.value?.validate().catch(() => !1) || e !== v || !t.value || n.value) return;
+			a.value = "", n.value = !0;
+			let o = ++v;
+			y = crypto.randomUUID();
+			let c = u.password;
+			u.password = "", s.value?.clearValidate("password");
 			try {
-				await y("start", {
-					email: l.email.trim(),
-					password: s,
-					attempt_id: h
-				}), a === m && t.value && S(a);
+				await C("start", {
+					email: u.email.trim(),
+					password: c,
+					attempt_id: y
+				}), o === v && t.value && te(o);
 			} catch (e) {
-				a === m && t.value && (n.value = !1, i.value = e.message);
+				o === v && t.value && (n.value = !1, a.value = e.message);
 			}
 		}
-		async function ee() {
-			if (m++, clearTimeout(f), clearTimeout(p), l.password = "", h) try {
-				await y("cancel", { attempt_id: h });
+		async function re() {
+			if (v++, clearTimeout(g), clearTimeout(_), u.password = "", y) try {
+				await C("cancel", { attempt_id: y });
 			} catch (e) {
-				i.value = e.message;
+				a.value = e.message;
 				return;
 			}
-			h = "", n.value = !1, g = !0, t.value = !1;
+			y = "", n.value = !1, b = !0, t.value = !1;
 		}
-		function te() {
-			l.password = "", o.value?.clearValidate(), i.value = "", r.value = !1, g = !1, _ && (_ = !1, Mn(x));
+		function E() {
+			u.password = "", s.value?.clearValidate(), a.value = "", r.value = !1, i.value = !1, b = !1, x && (x = !1, Mn(ee));
 		}
-		async function ne() {
-			await ee(), t.value || window.dispatchEvent(new CustomEvent("book-open-settings"));
+		async function D() {
+			await re(), t.value || window.dispatchEvent(new CustomEvent("book-open-settings"));
 		}
-		return Gr(() => window.addEventListener("book-login-open", x)), Jr(() => {
-			window.removeEventListener("book-login-open", x), clearTimeout(f), clearTimeout(p);
-		}), (e, a) => (H(), W(F(Yv), { locale: F(vb) }, {
+		return Gr(() => window.addEventListener("book-login-open", ee)), Jr(() => {
+			window.removeEventListener("book-login-open", ee), clearTimeout(g), clearTimeout(_);
+		}), (e, o) => (H(), W(F(Yv), { locale: F(vb) }, {
 			default: I(() => [K(F(ob), {
 				modelValue: t.value,
-				"onUpdate:modelValue": a[3] ||= (e) => t.value = e,
+				"onUpdate:modelValue": o[2] ||= (e) => t.value = e,
 				class: "auth-dialog",
 				"modal-class": "auth-overlay",
 				width: "430px",
@@ -9443,14 +9452,14 @@ var vb = {
 				"close-on-click-modal": !1,
 				"close-on-press-escape": !1,
 				"destroy-on-close": "",
-				onClosed: te
+				onClosed: E
 			}, {
 				header: I(({ titleId: e }) => [G("div", yb, [
 					G("button", {
 						class: "auth-close",
 						type: "button",
 						"aria-label": "关闭登录",
-						onClick: ee
+						onClick: re
 					}, [K(F(Q), null, {
 						default: I(() => [K(F(ug))]),
 						_: 1
@@ -9460,17 +9469,17 @@ var vb = {
 						_: 1
 					})]),
 					G("h2", { id: e }, "登录Pagelet", 8, xb),
-					a[4] ||= G("p", null, "连接你的 Z-Library 书库", -1)
+					o[3] ||= G("p", null, "连接你的 Z-Library 书库", -1)
 				])]),
 				default: I(() => [G("div", Sb, [
 					K(F(K_), {
 						ref_key: "formRef",
-						ref: o,
-						model: l,
-						rules: d,
+						ref: s,
+						model: u,
+						rules: h,
 						"label-position": "top",
 						"hide-required-asterisk": "",
-						onSubmit: Us(w, ["prevent"])
+						onSubmit: Us(T, ["prevent"])
 					}, {
 						default: I(() => [
 							K(F(q_), {
@@ -9480,9 +9489,9 @@ var vb = {
 								default: I(() => [K(F(zv), {
 									id: "auth-email",
 									ref_key: "emailRef",
-									ref: s,
-									modelValue: l.email,
-									"onUpdate:modelValue": a[0] ||= (e) => l.email = e,
+									ref: c,
+									modelValue: u.email,
+									"onUpdate:modelValue": o[0] ||= (e) => u.email = e,
 									disabled: n.value || r.value,
 									placeholder: "请输入邮箱地址",
 									autocomplete: "username",
@@ -9503,9 +9512,9 @@ var vb = {
 								default: I(() => [K(F(zv), {
 									id: "auth-password",
 									ref_key: "passwordRef",
-									ref: c,
-									modelValue: l.password,
-									"onUpdate:modelValue": a[1] ||= (e) => l.password = e,
+									ref: l,
+									modelValue: u.password,
+									"onUpdate:modelValue": o[1] ||= (e) => u.password = e,
 									disabled: n.value || r.value,
 									placeholder: "请输入密码",
 									type: "password",
@@ -9513,7 +9522,7 @@ var vb = {
 									autocomplete: "current-password",
 									"prefix-icon": F(hg),
 									maxlength: "1024",
-									onKeydown: Gs(Us(w, ["prevent"]), ["enter"])
+									onKeydown: Gs(Us(T, ["prevent"]), ["enter"])
 								}, null, 8, [
 									"modelValue",
 									"disabled",
@@ -9522,10 +9531,10 @@ var vb = {
 								])]),
 								_: 1
 							}),
-							i.value ? (H(), W(F(Ag), {
+							a.value ? (H(), W(F(Ag), {
 								key: 0,
 								class: "auth-alert",
-								title: i.value,
+								title: a.value,
 								type: "error",
 								"show-icon": "",
 								closable: !1
@@ -9535,12 +9544,12 @@ var vb = {
 								"native-type": "submit",
 								class: "auth-submit",
 								loading: n.value,
-								disabled: r.value
+								disabled: r.value || i.value
 							}, {
 								default: I(() => [r.value ? (H(), U(V, { key: 0 }, [K(F(Q), null, {
 									default: I(() => [K(F(og))]),
 									_: 1
-								}), a[5] ||= G("span", null, "登录成功", -1)], 64)) : (H(), U(V, { key: 1 }, [G("span", null, A(n.value ? "正在登录…" : "登录"), 1), n.value ? q("", !0) : (H(), W(F(Q), { key: 0 }, {
+								}), o[4] ||= G("span", null, "登录成功", -1)], 64)) : (H(), U(V, { key: 1 }, [G("span", null, A(n.value ? "正在登录…" : "登录"), 1), n.value ? q("", !0) : (H(), W(F(Q), { key: 0 }, {
 									default: I(() => [K(F(ag))]),
 									_: 1
 								}))], 64))]),
@@ -9549,39 +9558,43 @@ var vb = {
 						]),
 						_: 1
 					}, 8, ["model"]),
-					G("div", Cb, [a[8] ||= G("span", null, "还没有账号？", -1), u.value ? (H(), U("a", {
-						key: 0,
-						href: n.value ? void 0 : u.value,
-						target: "_blank",
-						rel: "noopener noreferrer",
-						"aria-disabled": n.value,
-						tabindex: n.value ? -1 : 0,
-						title: "在新窗口完成注册后，回到这里登录",
-						onClick: a[2] ||= (e) => n.value && e.preventDefault()
-					}, [a[6] ||= Ha(" 去注册 ", -1), K(F(Q), null, {
-						default: I(() => [K(F(bg))]),
-						_: 1
-					})], 8, wb)) : (H(), W(F(Fy), {
-						key: 1,
-						link: "",
-						type: "primary",
-						disabled: n.value,
-						onClick: ne
-					}, {
-						default: I(() => [...a[7] ||= [Ha("先设置访问域名", -1)]]),
-						_: 1
-					}, 8, ["disabled"]))]),
-					G("div", Tb, [K(F(Q), null, {
+					G("div", Cb, [
+						o[7] ||= G("span", null, "还没有账号？", -1),
+						G("a", {
+							href: m.value ? void 0 : f.value,
+							target: "_blank",
+							rel: "noopener noreferrer",
+							"aria-disabled": m.value,
+							tabindex: m.value ? -1 : 0,
+							title: "在书库网页完成注册后，回到这里登录"
+						}, [o[5] ||= Ha(" 去注册 ", -1), K(F(Q), null, {
+							default: I(() => [K(F(bg))]),
+							_: 1
+						})], 8, wb),
+						o[8] ||= G("span", { "aria-hidden": "true" }, "·", -1),
+						G("a", {
+							href: m.value ? void 0 : p.value,
+							target: "_blank",
+							rel: "noopener noreferrer",
+							"aria-disabled": m.value,
+							tabindex: m.value ? -1 : 0,
+							title: "打开书库登录页并使用网页上的忘记密码入口"
+						}, [o[6] ||= Ha(" 忘记密码 ", -1), K(F(Q), null, {
+							default: I(() => [K(F(bg))]),
+							_: 1
+						})], 8, Tb)
+					]),
+					G("div", Eb, [K(F(Q), null, {
 						default: I(() => [K(F(hg))]),
 						_: 1
-					}), a[9] ||= G("span", null, "密码仅用于登录，不会保存", -1)]),
-					G("div", Eb, [G("span", null, A(b()), 1), K(F(Fy), {
+					}), o[9] ||= G("span", null, "密码仅用于登录，不会保存", -1)]),
+					G("div", Db, [G("span", null, A(w()), 1), K(F(Fy), {
 						link: "",
 						type: "primary",
 						disabled: n.value,
-						onClick: ne
+						onClick: D
 					}, {
-						default: I(() => [...a[10] ||= [Ha("连接设置", -1)]]),
+						default: I(() => [...o[10] ||= [Ha("连接设置", -1)]]),
 						_: 1
 					}, 8, ["disabled"])])
 				])]),
@@ -9590,32 +9603,32 @@ var vb = {
 			_: 1
 		}, 8, ["locale"]));
 	}
-}, Ob = { class: "detail-hero" }, kb = { class: "detail-cover" }, Ab = ["src", "alt"], jb = {
+}, Ab = { class: "detail-hero" }, jb = { class: "detail-cover" }, Mb = ["src", "alt"], Nb = {
 	key: 1,
 	class: "detail-cover-empty"
-}, Mb = { class: "detail-heading" }, Nb = {
+}, Pb = { class: "detail-heading" }, Fb = {
 	key: 1,
 	class: "detail-edition"
-}, Pb = { class: "detail-section" }, Fb = {
+}, Ib = { class: "detail-section" }, Lb = {
 	key: 1,
 	class: "detail-error"
-}, Ib = {
+}, Rb = {
 	key: 2,
 	class: "detail-description"
-}, Lb = {
+}, zb = {
 	key: 3,
 	class: "detail-missing"
-}, Rb = {
+}, Bb = {
 	key: 4,
 	class: "detail-refreshing",
 	role: "status"
-}, zb = { class: "detail-section detail-bibliography" }, Bb = {
+}, Vb = { class: "detail-section detail-bibliography" }, Hb = {
 	key: 0,
 	class: "detail-metadata"
-}, Vb = {
+}, Ub = {
 	key: 1,
 	class: "detail-missing"
-}, Hb = { class: "detail-footer" }, Ub = ["href"], Wb = { key: 1 }, Gb = {
+}, Wb = { class: "detail-footer" }, Gb = ["href"], Kb = { key: 1 }, qb = {
 	__name: "BookDetails",
 	setup(e) {
 		let t = /* @__PURE__ */ P(!1), n = /* @__PURE__ */ P(!1), r = /* @__PURE__ */ P(!1), i = /* @__PURE__ */ P(!1), a = /* @__PURE__ */ P({}), o = /* @__PURE__ */ P(""), s = /* @__PURE__ */ P(""), c = document.querySelector("meta[name=\"local-token\"]").content, l = 0, u, d = J(() => a.value.authors?.join(" / ") || "作者信息未提供"), f = J(() => [
@@ -9703,7 +9716,7 @@ var vb = {
 					type: "error",
 					closable: !1,
 					class: "detail-download-error"
-				}, null, 8, ["title"])) : q("", !0), G("div", Hb, [a.value.url ? (H(), U("a", {
+				}, null, 8, ["title"])) : q("", !0), G("div", Wb, [a.value.url ? (H(), U("a", {
 					key: 0,
 					href: a.value.url,
 					target: "_blank",
@@ -9711,7 +9724,7 @@ var vb = {
 				}, [c[6] ||= Ha("原站详情 ", -1), K(F(Q), null, {
 					default: I(() => [K(F(bg))]),
 					_: 1
-				})], 8, Ub)) : (H(), U("span", Wb)), K(F(Fy), {
+				})], 8, Gb)) : (H(), U("span", Kb)), K(F(Fy), {
 					type: "primary",
 					icon: F(dg),
 					disabled: !p.value,
@@ -9726,16 +9739,16 @@ var vb = {
 					"loading"
 				])])]),
 				default: I(() => [
-					G("div", Ob, [G("div", kb, [a.value.cover && !i.value ? (H(), U("img", {
+					G("div", Ab, [G("div", jb, [a.value.cover && !i.value ? (H(), U("img", {
 						key: 0,
 						src: a.value.cover,
 						alt: `${a.value.name}封面`,
 						referrerpolicy: "no-referrer",
 						onError: c[0] ||= (e) => i.value = !0
-					}, null, 40, Ab)) : (H(), U("div", jb, [K(F(Q), null, {
+					}, null, 40, Mb)) : (H(), U("div", Nb, [K(F(Q), null, {
 						default: I(() => [K(F(vg))]),
 						_: 1
-					}), G("span", null, A(i.value ? "封面未能加载" : "暂无封面"), 1)]))]), G("div", Mb, [
+					}), G("span", null, A(i.value ? "封面未能加载" : "暂无封面"), 1)]))]), G("div", Pb, [
 						a.value.extension ? (H(), W(F(By), {
 							key: 0,
 							size: "small",
@@ -9746,9 +9759,9 @@ var vb = {
 						})) : q("", !0),
 						G("h2", null, A(a.value.name || "未命名图书"), 1),
 						G("p", null, A(d.value), 1),
-						a.value.publisher || a.value.year ? (H(), U("span", Nb, A([a.value.publisher, a.value.year === "0" ? "" : a.value.year].filter(Boolean).join(" · ")), 1)) : q("", !0)
+						a.value.publisher || a.value.year ? (H(), U("span", Fb, A([a.value.publisher, a.value.year === "0" ? "" : a.value.year].filter(Boolean).join(" · ")), 1)) : q("", !0)
 					])]),
-					G("section", Pb, [
+					G("section", Ib, [
 						c[4] ||= G("h3", null, "内容简介", -1),
 						n.value && !a.value.description ? (H(), W(F(_b), {
 							key: 0,
@@ -9757,7 +9770,7 @@ var vb = {
 							class: "detail-loading",
 							"aria-label": "正在加载图书简介"
 						})) : q("", !0),
-						o.value ? (H(), U("div", Fb, [K(F(Ag), {
+						o.value ? (H(), U("div", Lb, [K(F(Ag), {
 							title: o.value,
 							type: "warning",
 							"show-icon": "",
@@ -9771,10 +9784,10 @@ var vb = {
 							default: I(() => [...c[3] ||= [Ha("重新加载", -1)]]),
 							_: 1
 						}, 8, ["disabled"])])) : q("", !0),
-						a.value.description ? (H(), U("p", Ib, A(a.value.description), 1)) : !n.value && !o.value ? (H(), U("p", Lb, "书库暂未提供这本书的简介，可结合下方版本信息判断，或打开原站查看。")) : q("", !0),
-						n.value && a.value.description ? (H(), U("p", Rb, "正在更新简介…")) : q("", !0)
+						a.value.description ? (H(), U("p", Rb, A(a.value.description), 1)) : !n.value && !o.value ? (H(), U("p", zb, "书库暂未提供这本书的简介，可结合下方版本信息判断，或打开原站查看。")) : q("", !0),
+						n.value && a.value.description ? (H(), U("p", Bb, "正在更新简介…")) : q("", !0)
 					]),
-					G("section", zb, [c[5] ||= G("h3", null, "版本信息", -1), f.value.length ? (H(), U("dl", Bb, [(H(!0), U(V, null, ai(f.value, ([e, t]) => (H(), U("div", { key: e }, [G("dt", null, A(e), 1), G("dd", null, A(t), 1)]))), 128))])) : (H(), U("p", Vb, "书库暂未提供更多版本信息。"))])
+					G("section", Vb, [c[5] ||= G("h3", null, "版本信息", -1), f.value.length ? (H(), U("dl", Hb, [(H(!0), U(V, null, ai(f.value, ([e, t]) => (H(), U("div", { key: e }, [G("dt", null, A(e), 1), G("dd", null, A(t), 1)]))), 128))])) : (H(), U("p", Ub, "书库暂未提供更多版本信息。"))])
 				]),
 				_: 1
 			}, 8, ["modelValue"])]),
@@ -9783,4 +9796,4 @@ var vb = {
 	}
 };
 // src/main.js
-Ys({ render: () => _o(V, [_o(Db), _o(Gb)]) }).mount("#login-ui");
+Ys({ render: () => _o(V, [_o(kb), _o(qb)]) }).mount("#login-ui");

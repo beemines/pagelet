@@ -4,16 +4,25 @@ import { ElDialog, ElForm, ElFormItem, ElInput, ElButton, ElAlert, ElIcon, ElCon
 import { Reading, Message, Lock, Close, ArrowRight, CircleCheckFilled, TopRight } from '@element-plus/icons-vue'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
 
-const visible = ref(false), busy = ref(false), success = ref(false)
+const visible = ref(false), busy = ref(false), success = ref(false), loadingState = ref(false)
 const message = ref(''), domain = ref(''), formRef = ref(), emailRef = ref(), passwordRef = ref()
 const credentials = reactive({ email: '', password: '' })
-const registrationUrl = computed(() => {
+const accountOrigin = computed(() => {
   try {
     const base = new URL(domain.value)
-    if (base.protocol !== 'https:' || base.username || base.password) return ''
-    return new URL('/registration', base.origin).href
+    if (base.protocol !== 'https:' || base.username || base.password || base.port
+        || base.pathname !== '/' || base.search || base.hash) return ''
+    return base.origin
   } catch { return '' }
 })
+const accountPortal = 'https://z-lib.sk/'
+// zlib.bz accepts password login but directs new accounts to z-lib.sk.
+const registrationUrl = computed(() => {
+  const origin = accountOrigin.value
+  return new URL('/registration', origin && origin !== 'https://zlib.bz' ? origin : accountPortal).href
+})
+const recoveryUrl = computed(() => new URL('/login', accountOrigin.value || accountPortal).href)
+const linksDisabled = computed(() => loadingState.value || busy.value || success.value)
 const rules = {
   email: [{ required: true, message: '请输入账号邮箱', trigger: 'blur' }, { type: 'email', message: '请输入正确的邮箱地址', trigger: 'blur' }],
   password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
@@ -41,6 +50,7 @@ async function open() {
   if (visible.value) return
   const current = ++generation
   message.value = ''; success.value = false; credentials.password = ''; visible.value = true
+  domain.value = ''; loadingState.value = true
   try {
     const state = await request('state')
     if (current !== generation || !visible.value) return
@@ -48,8 +58,14 @@ async function open() {
     busy.value = ['running', 'cancelling'].includes(state.status)
     attemptId = busy.value ? state.attempt_id || '' : ''
     if (busy.value) schedulePoll(generation)
-  } catch (error) { message.value = error.message }
-  await nextTick(); emailRef.value?.focus()
+  } catch (error) {
+    if (current === generation && visible.value) message.value = error.message
+  } finally {
+    if (current === generation) loadingState.value = false
+  }
+  if (current === generation && visible.value) {
+    await nextTick(); emailRef.value?.focus()
+  }
 }
 function schedulePoll(current) {
   clearTimeout(pollTimer)
@@ -73,7 +89,7 @@ async function poll(current) {
   } catch (error) { busy.value = false; message.value = error.message }
 }
 async function submit() {
-  if (busy.value || success.value) return
+  if (busy.value || success.value || loadingState.value) return
   const opening = generation
   const valid = await formRef.value?.validate().catch(() => false)
   if (!valid || opening !== generation || !visible.value || busy.value) return
@@ -99,7 +115,7 @@ async function close() {
   attemptId = ''; busy.value = false; closing = true; visible.value = false
 }
 function clear() {
-  credentials.password = ''; formRef.value?.clearValidate(); message.value = ''; success.value = false; closing = false
+  credentials.password = ''; formRef.value?.clearValidate(); message.value = ''; success.value = false; loadingState.value = false; closing = false
   if (reopenRequested) { reopenRequested = false; nextTick(open) }
 }
 async function settings() {
@@ -131,18 +147,22 @@ onBeforeUnmount(() => { window.removeEventListener('book-login-open', open); cle
             <ElInput id="auth-password" ref="passwordRef" v-model="credentials.password" :disabled="busy || success" placeholder="请输入密码" type="password" show-password autocomplete="current-password" :prefix-icon="Lock" maxlength="1024" @keydown.enter.prevent="submit" />
           </ElFormItem>
           <ElAlert v-if="message" class="auth-alert" :title="message" type="error" show-icon :closable="false" />
-          <ElButton type="primary" native-type="submit" class="auth-submit" :loading="busy" :disabled="success">
+          <ElButton type="primary" native-type="submit" class="auth-submit" :loading="busy" :disabled="success || loadingState">
             <template v-if="success"><ElIcon><CircleCheckFilled /></ElIcon><span>登录成功</span></template>
             <template v-else><span>{{ busy ? '正在登录…' : '登录' }}</span><ElIcon v-if="!busy"><ArrowRight /></ElIcon></template>
           </ElButton>
         </ElForm>
         <div class="auth-signup">
           <span>还没有账号？</span>
-          <a v-if="registrationUrl" :href="busy ? undefined : registrationUrl" target="_blank" rel="noopener noreferrer"
-            :aria-disabled="busy" :tabindex="busy ? -1 : 0" title="在新窗口完成注册后，回到这里登录" @click="busy && $event.preventDefault()">
+          <a :href="linksDisabled ? undefined : registrationUrl" target="_blank" rel="noopener noreferrer"
+            :aria-disabled="linksDisabled" :tabindex="linksDisabled ? -1 : 0" title="在书库网页完成注册后，回到这里登录">
             去注册 <ElIcon><TopRight /></ElIcon>
           </a>
-          <ElButton v-else link type="primary" :disabled="busy" @click="settings">先设置访问域名</ElButton>
+          <span aria-hidden="true">·</span>
+          <a :href="linksDisabled ? undefined : recoveryUrl" target="_blank" rel="noopener noreferrer"
+            :aria-disabled="linksDisabled" :tabindex="linksDisabled ? -1 : 0" title="打开书库登录页并使用网页上的忘记密码入口">
+            忘记密码 <ElIcon><TopRight /></ElIcon>
+          </a>
         </div>
         <div class="auth-privacy"><ElIcon><Lock /></ElIcon><span>密码仅用于登录，不会保存</span></div>
         <div class="auth-connection"><span>{{ hostLabel() }}</span><ElButton link type="primary" :disabled="busy" @click="settings">连接设置</ElButton></div>

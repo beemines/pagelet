@@ -33,11 +33,27 @@ def plain_terminal(text):
 
 def _failure(text):
     lowered = text.lower()
-    if 'incorrect email or password' in lowered:
+    precheck = re.search(r'not usable for\s+eapi\s*\(([a-z_]+)\)', lowered)
+    if precheck:
+        status = precheck.group(1)
+        if status == 'network_error':
+            return '连不上书库，尚未验证账号或密码。请在「连接设置」检测域名或检查代理。'
+        if status in ('challenged', 'diamwall_blocked'):
+            return '书库要求网页验证，尚未验证账号或密码。请在浏览器登录，或检测其他可用域名。'
+        if status == 'redirect_loop':
+            return '当前书库域名反复跳转，尚未验证账号或密码。请在「连接设置」更换可用域名。'
+        if status == 'invalid_domain':
+            return '访问域名无效，尚未验证账号或密码。请在「连接设置」检测域名。'
+        return '书库登录接口检查未通过，尚未验证账号或密码。请在「连接设置」检测域名。'
+    if any(phrase in lowered for phrase in ('incorrect email or password', 'invalid email or password')):
         return '邮箱或密码不正确，请检查后重试。'
+    if any(phrase in lowered for phrase in ('incorrect password', 'wrong password')):
+        return '密码不正确，请检查后重试。'
+    if any(phrase in lowered for phrase in ('account not found', 'user not found', 'account does not exist')):
+        return '书库没有找到这个账号，请核对邮箱地址。'
     if 'authorization failed' in lowered:
         return '书库拒绝了密码登录。请先确认网页端能否登录；此账号可能需要使用原软件的 Cookie 导入方式。'
-    if 'domain' in lowered and any(s in lowered for s in ('not configured', 'not allowed', 'invalid', 'requires')):
+    if any(phrase in lowered for phrase in ('domain is not configured', 'allowed z-library domain', 'invalid domain')):
         return '访问域名无效，请返回网页设置重新检测。'
     if any(s in lowered for s in ('timeout', 'timed out', 'connect', 'deadline', 'no such host', 'unreachable')):
         return '连接书库失败，请在网页设置中检查域名或代理。'

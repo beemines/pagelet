@@ -7,12 +7,13 @@ import time
 
 def runtime_check(output):
     from app_paths import BASE, CLI_PATH
+    from version import VERSION
     import site,subprocess
     site.addsitedir(str(BASE/'vendor'))
     import pythoncom
     from win32com.shell import shell
     from winpty import PTY
-    result={'version':'0.0.1','frozen':bool(getattr(sys,'frozen',False)),
+    result={'version':VERSION,'frozen':bool(getattr(sys,'frozen',False)),
             'resources':all((BASE/name).is_file() for name in ['static/index.html','static/app.js','static/login/login.js','featured_books.json'])}
     run=subprocess.run([str(CLI_PATH),'version'],capture_output=True,text=True,creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0),timeout=10)
     result['cli']=run.returncode==0 and 'v0.0.12' in run.stdout
